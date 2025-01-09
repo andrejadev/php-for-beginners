@@ -11,7 +11,7 @@ if(!Validator::email($email)){
     $errors['email'] = 'Please enter a valid email address';
 }
 
-if(!Validator::string($password,1, 255)){
+if(!Validator::string($password,7, 255)){
     $errors['password'] = 'Please provide a password of at least 7 characters';
 }
 
