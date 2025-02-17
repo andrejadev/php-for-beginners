@@ -2,6 +2,7 @@
 
 //log in the user if the credentials match
 use Core\Authenticator;
+use Core\Session;
 use Http\Forms\LoginForm;
 
 $email = $_POST['email'];
@@ -19,7 +20,6 @@ if ($form->validate($email, $password)) {
     }
 }
 
-return view('sessions/create.view,php', [
-    'errors' => $form->errors()
-]);
+Session::flash('errors', $form->errors());
 
+return redirect('/login');
