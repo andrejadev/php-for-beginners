@@ -2,27 +2,16 @@
 
 //log in the user if the credentials match
 use Core\Authenticator;
-use Core\Session;
 use Http\Forms\LoginForm;
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$form = LoginForm::validate($attributes = [
+    'email' => $_POST['email'],
+    'password' => $_POST['password']
+]);
 
-$form = new LoginForm();
+$singedIn = (new Authenticator)->attempt($attributes['email'], $attributes['password']);
 
-if ($form->validate($email, $password)) {
-    $auth = new Authenticator();
-
-    if ($auth->attempt($email, $password)) {
-        redirect('/');
-    } else {
-        $form->error('email', 'The email and password does not exist.');
-    }
+if (!$singedIn) {
+    $form->error('email', 'No matching account found for this email and password.')->throw();
 }
-
-Session::flash('errors', $form->errors());
-Session::flash('old', [
-    'email' => $_POST['email']
-    ]);
-
-return redirect('/login');
+redirect('/');
