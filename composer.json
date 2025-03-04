@@ -1,0 +1,16 @@
+{
+    "name": "andreja/demo",
+    "authors": [
+        {
+            "name": "andreja",
+            "email": "andrejadev@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    }
+}

@@ -7,13 +7,9 @@ use Core\ValidationException;
 session_start();
 const BASE_PATH = __DIR__ . '/../';
 
-require BASE_PATH . 'Core/functions.php';
+require BASE_PATH . 'vendor/autoload.php';
 
-spl_autoload_register(function ($class) {
-    //Core\Database
-    $class = str_replace("\\", DIRECTORY_SEPARATOR, $class);
-    require BASE_PATH("{$class}.php");
-});
+require BASE_PATH . 'Core/functions.php';
 
 require BASE_PATH("bootstrap.php");
 
