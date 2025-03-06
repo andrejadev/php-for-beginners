@@ -12,8 +12,6 @@ $numbers = new Collection([
 //    die('it contains 10');
 //}
 
-$lessOrEqualTo5 = $numbers->filter(function ($number) {
-    return $number <= 5;
-});
+$lessOrEqualTo5 = $numbers->filter(fn($number) => $number <= 5);
 var_dump($lessOrEqualTo5);
 
