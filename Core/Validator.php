@@ -10,8 +10,14 @@ class Validator
         return strlen($value) >= $min && strlen($value) <= $max;
     }
 
-    public static function email($value)
+    public static function email($value): bool
     {
         return filter_var($value, FILTER_VALIDATE_EMAIL);
+    }
+
+    //writing this fn for practising PEST testing
+    public static function greaterThen(int $value, int $greaterThan): bool
+    {
+        return $value > $greaterThan;
     }
 }
